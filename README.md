@@ -1,4 +1,4 @@
-# lvdund.nvim
+# lvdund nvim
 
 This is my nvim configurations for: golang, markdown preview.
 TODO: I will update for ...
