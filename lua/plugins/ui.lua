@@ -90,7 +90,7 @@ return {
 			"nvim-tree/nvim-web-devicons",
 		},
 		event = { "BufEnter" },
-		config = function(_, opts)
+		config = function(_, _)
 			require("sttusline").setup({
 				-- statusline_color = "#000000",
 				statusline_color = "StatusLine",

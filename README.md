@@ -1,6 +1,6 @@
 # lvdund nvim
 
-This is my nvim configurations for: golang, markdown preview.
+This is my nvim configurations for: golang, markdown preview, git, term.
 TODO: I will update for ...
 
 `What I use:`
@@ -12,8 +12,12 @@ TODO: I will update for ...
 - [Telescope](https://github.com/nvim-telescope/telescope.nvim)
 - Golang:
     - [goplements](https://github.com/maxandron/goplements.nvim): visualizes Go struct and interface implementations.
-    - [gotest](https://github.com/CadeMichael/gotest.nvim): run go tests from within Neovim.
-    - [go-tag](https://github.com/devkvlt/go-tags.nvim): modify Go struct tags.
+    - [gotest](https://github.com/CadeMichael/gotest.nvim)
+    - [go-tag](https://github.com/devkvlt/go-tags.nvim)
+- Git: 
+    - [Lazygit](https://github.com/kdheepak/lazygit.nvim)
+    - [gitsigns](https://github.com/lewis6991/gitsigns.nvim): git status preview.
+- [Terminal](https://github.com/akinsho/toggleterm.nvim)
 - ...
 
 ## Requirement
@@ -29,6 +33,14 @@ go install golang.org/x/tools/gopls@latest
 go install mvdan.cc/gofumpt@latest
 go install golang.org/x/tools/cmd/goimports@latest
 go install github.com/fatih/gomodifytags@latest
+```
+
+- Install Lazygit
+```bash
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+sudo install lazygit -D -t /usr/local/bin/
 ```
 
 - Install Neovim v0.10+

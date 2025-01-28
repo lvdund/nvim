@@ -20,24 +20,41 @@ map("n", "<leader>qq", ":wqa<CR>", { desc = "Quit" })
 map("n", "<leader>qc", ":qa!<CR>", { desc = "Quit not Save" })
 
 -- Move a line up or down in normal mode
-vim.keymap.set("n", "<A-down>", ":m .+1<CR>==", { desc = "Move line down", noremap = true, silent = true })
-vim.keymap.set("n", "<A-up>", ":m .-2<CR>==", { desc = "Move line up", noremap = true, silent = true })
+map("n", "<A-down>", ":m .+1<CR>==", { desc = "Move line down", noremap = true, silent = true })
+map("n", "<A-up>", ":m .-2<CR>==", { desc = "Move line up", noremap = true, silent = true })
 
 -- Move a line or block up or down in visual mode
-vim.keymap.set("v", "<A-down>", ":m '>+1<CR>gv=gv", { desc = "Move selection down", noremap = true, silent = true })
-vim.keymap.set("v", "<A-up>", ":m '<-2<CR>gv=gv", { desc = "Move selection up", noremap = true, silent = true })
+map("v", "<A-down>", ":m '>+1<CR>gv=gv", { desc = "Move selection down", noremap = true, silent = true })
+map("v", "<A-up>", ":m '<-2<CR>gv=gv", { desc = "Move selection up", noremap = true, silent = true })
 
 -- Resize window
-vim.keymap.set("n", "=", [[<cmd>vertical resize +5<cr>]])
-vim.keymap.set("n", "-", [[<cmd>vertical resize -5<cr>]])
-vim.keymap.set("n", "+", [[<cmd>horizontal resize +2<cr>]])
-vim.keymap.set("n", "_", [[<cmd>horizontal resize -2<cr>]])
+map("n", "=", [[<cmd>vertical resize +5<cr>]])
+map("n", "-", [[<cmd>vertical resize -5<cr>]])
+map("n", "+", [[<cmd>horizontal resize +2<cr>]])
+map("n", "_", [[<cmd>horizontal resize -2<cr>]])
 
 -- split window
 map("n", "ss", ":split<CR>", opts) -- up/down
 map("n", "sv", ":vsplit<CR>", opts) -- left/right
 
 -- log
--- vim.keymap.set('n', '<leader>ee', vim.diagnostic.open_float, { desc = 'Open Errors' })
--- vim.keymap.set('n', '<leader>en', vim.diagnostic.goto_next, { desc = 'Next Error' })
--- vim.keymap.set('n', '<leader>ep', vim.diagnostic.goto_prev, { desc = 'Previous Error' })
+map("n", "<leader>scc", ":TodoTelescope<CR>", { desc = "List all TODO" })
+map("n", "<leader>scn", function()
+	require("todo-comments").jump_next()
+end, { desc = "[N]ext TODO" })
+map("n", "<leader>scp", function()
+	require("todo-comments").jump_prev()
+end, { desc = "[P]revious TODO" })
+map("n", "<leader>sdd", vim.diagnostic.open_float, { desc = "Open Errors" })
+map("n", "<leader>sdn", vim.diagnostic.goto_next, { desc = "[N]ext Error" })
+map("n", "<leader>sdp", vim.diagnostic.goto_prev, { desc = "[P]revious Error" })
+
+-- Git
+map("n", "<leader>gh", ":Gitsigns preview_hunk<CR>", { desc = "[G]itsigns [H]unk" })
+map("n", "<leader>gt", ":Gitsigns toggle_current_line_blame<CR>", { desc = "[G]itsigns toggle [T]ime" })
+map("n", "<leader>gg", ":LazyGit<CR>", { desc = "Lazy[G]it" })
+map("n", "<leader>gf", ":LazyGitFilterCurrentFile<CR>", { desc = "Current [F]ile" })
+map("n", "<leader>gs", ":TermExec cmd='git status'<CR>", { desc = "[S]tatus" })
+
+-- Term
+map("n", "<C-\\>", ":ToggleTerm<CR>", opts)
