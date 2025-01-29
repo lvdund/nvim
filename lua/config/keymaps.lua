@@ -58,3 +58,9 @@ map("n", "<leader>gs", ":TermExec cmd='git status'<CR>", { desc = "[S]tatus" })
 
 -- Term
 map("n", "<C-\\>", ":ToggleTerm<CR>", opts)
+
+-- Quickfix
+map("n", "<C-n>", ":cnext<CR>", { desc = "Next search list" })
+map("n", "<C-p>", ":cprevious<CR>", { desc = "Previous search list" })
+map("n", "qc", ":cclose<CR>", { desc = "[C]lose search list" })
+map("n", "qq", ":copen<CR>", { desc = "[L]ist search list" })
