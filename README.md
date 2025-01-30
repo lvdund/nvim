@@ -24,7 +24,12 @@ TODO: I will update for ...
 
 - Install fzf & ripgrep for [Telescope](https://github.com/nvim-telescope/telescope.nvim)
 ```bash
-sudo apt install fzf ripgrep
+sudo apt install -y fzf ripgrep
+```
+
+- Replace rm by `trash-cli` in [neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
+```bash
+sudo apt install -y trash-cli
 ```
 
 - Install Golang dependencies:
