@@ -50,10 +50,10 @@ sudo install lazygit -D -t /usr/local/bin/
 
 - Install Neovim v0.10+
 ```bash
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
 sudo rm -rf /opt/nvim
-sudo tar -C /opt -xzf nvim-linux64.tar.gz
-rm nvim-linux64.tar.gz
+sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+rm nvim-linux-x86_64.tar.gz
 ```
 
 Then add this to your shell config (~/.bashrc, ~/.zshrc, ...):
