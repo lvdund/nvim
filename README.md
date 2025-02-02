@@ -58,7 +58,7 @@ rm nvim-linux-x86_64.tar.gz
 
 Then add this to your shell config (~/.bashrc, ~/.zshrc, ...):
 ```bash
-export PATH="$PATH:/opt/nvim-linux64/bin"
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 ```
 
 - Clean nvim cache
