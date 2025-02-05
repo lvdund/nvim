@@ -23,6 +23,8 @@ return {
 			{ "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "CLose Non-Pinned Buffers" },
 			{ "<leader>bo", "<Cmd>BufferLineCloseOthers<CR>", desc = "Close other Buffers" },
 			{ "<leader>bc", "<Cmd>bd<CR>", desc = "Close this Buffer" },
+			{ "<leader>bh", "<Cmd>BufferLineMovePrev<CR>", desc = "Close other Buffers" },
+			{ "<leader>bl", "<Cmd>BufferLineMoveNext<CR>", desc = "Close other Buffers" },
 			{ "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
 			{ "<Tab>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
 		},

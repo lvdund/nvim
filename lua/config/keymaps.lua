@@ -3,14 +3,18 @@ local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")
-map("n", ";", ":", opts)
+map("n", "'", ":", opts)
 map("i", "jk", "<ESC>", opts)
 
 -- General keymaps
-map("n", "<C-left>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-map("n", "<C-right>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-map("n", "<C-down>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-map("n", "<C-up>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+-- map("n", "<C-left>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+-- map("n", "<C-right>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+-- map("n", "<C-down>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+-- map("n", "<C-up>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+map("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+map("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+map("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 map("n", "dw", "vb_d") -- delete a word backup
 map("n", "<C-a>", "gg<S-v>G") -- select all
@@ -45,9 +49,11 @@ end, { desc = "[N]ext TODO" })
 map("n", "<leader>scp", function()
 	require("todo-comments").jump_prev()
 end, { desc = "[P]revious TODO" })
-map("n", "<leader>sdd", vim.diagnostic.open_float, { desc = "Open Errors" })
-map("n", "<leader>sdn", vim.diagnostic.goto_next, { desc = "[N]ext Error" })
-map("n", "<leader>sdp", vim.diagnostic.goto_prev, { desc = "[P]revious Error" })
+
+-- Diagnostic
+map("n", "<leader>ee", vim.diagnostic.open_float, { desc = "Open Errors" })
+map("n", "<leader>en", vim.diagnostic.goto_next, { desc = "[N]ext Error" })
+map("n", "<leader>ep", vim.diagnostic.goto_prev, { desc = "[P]revious Error" })
 
 -- Git
 map("n", "<leader>gh", ":Gitsigns preview_hunk<CR>", { desc = "[G]itsigns [H]unk" })
