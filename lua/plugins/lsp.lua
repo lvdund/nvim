@@ -198,6 +198,16 @@ return {
 						luasnip.lsp_expand(args.body)
 					end,
 				},
+				window = {
+					completion = {
+						border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+						winhighlight = "Normal:CmpPmenu,FloatBorder:CmpBorder,CursorLine:PmenuSel,Search:None",
+					},
+					documentation = {
+						border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+						winhighlight = "Normal:CmpPmenu,FloatBorder:CmpBorder,CursorLine:PmenuSel,Search:None",
+					},
+				},
 				completion = { completeopt = "menu,menuone,noinsert" },
 				mapping = cmp.mapping.preset.insert({
 

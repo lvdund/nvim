@@ -194,6 +194,11 @@ return {
 		opts = {},
 	},
 	{
+		"nvim-zh/colorful-winsep.nvim",
+		config = true,
+		event = { "WinLeave" },
+	},
+	{
 		"echasnovski/mini.cursorword",
 		version = "*",
 	},
