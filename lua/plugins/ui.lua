@@ -1,3 +1,10 @@
+local icons = {
+	Error = " ",
+	Warn = " ",
+	Hint = " ",
+	Info = " ",
+}
+
 return {
 	{
 		-- "folke/tokyonight.nvim",
@@ -29,7 +36,20 @@ return {
 			{ "<Tab>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
 		},
 		opts = {
+			highlights = {
+				buffer_selected = {
+					bold = true,
+					italic = true,
+				},
+			},
+
 			options = {
+				diagnostics = "nvim_lsp",
+				diagnostics_indicator = function(_, _, diag)
+					local ret = (diag.error and icons.Error .. diag.error .. " " or "")
+						.. (diag.warning and icons.Warn .. diag.warning or "")
+					return vim.trim(ret)
+				end,
 				offsets = {
 					{
 						filetype = "neo-tree",
@@ -37,6 +57,15 @@ return {
 						highlight = "Directory",
 						text_align = "left",
 					},
+				},
+				hover = {
+					enabled = true,
+					delay = 200,
+					reveal = { "close" },
+				},
+				indicator = {
+					icon = "▎", -- this should be omitted if indicator style is not 'icon'
+					style = "underline",
 				},
 			},
 		},
@@ -199,7 +228,20 @@ return {
 		event = { "WinLeave" },
 	},
 	{
-		"echasnovski/mini.cursorword",
-		version = "*",
+		"ya2s/nvim-cursorline",
+		config = function()
+			require("nvim-cursorline").setup({
+				cursorline = {
+					enable = true,
+					timeout = 1000,
+					number = false,
+				},
+				cursorword = {
+					enable = true,
+					min_length = 3,
+					hl = { underline = true },
+				},
+			})
+		end,
 	},
 }
