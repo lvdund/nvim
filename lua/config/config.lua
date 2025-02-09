@@ -28,7 +28,7 @@ vim.opt.splitbelow = true
 -- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.inccommand = "split"
 vim.opt.cursorline = true
--- vim.opt.scrolloff = 5
+vim.opt.scrolloff = 4
 
 -- setup vim opt
 vim.opt_global.signcolumn = "auto"
