@@ -64,7 +64,7 @@ map("n", "<leader>gf", ":LazyGitFilterCurrentFile<CR>", { desc = "Current [F]ile
 map("n", "<leader>gs", ":TermExec cmd='git status'<CR>", { desc = "[S]tatus" })
 
 -- Term
-map("n", "<C-\\>", ":ToggleTerm<CR>", opts)
+-- map("n", "<C-\\>", ":ToggleTerm<CR>", opts)
 
 -- Quickfix
 map("n", "<C-n>", ":cnext<CR>", { desc = "Next search list" })
