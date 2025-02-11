@@ -323,18 +323,39 @@ return {
 		},
 		config = function()
 			require("telescope").setup({
-				-- You can put your default mappings / updates / etc. in here
-				--  All the info you're looking for is in `:help telescope.setup()`
-				--
-				-- defaults = {
-				--   mappings = {
-				--     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-				--   },
-				-- },
-				-- pickers = {}
-				extensions = {
-					["ui-select"] = {
-						require("telescope.themes").get_dropdown(),
+				defaults = {
+					prompt_prefix = " ",
+					selection_caret = " ",
+					-- open files in the first window that is an actual file.
+					-- use the current window if no other window is available.
+					get_selection_window = function()
+						local wins = vim.api.nvim_list_wins()
+						table.insert(wins, 1, vim.api.nvim_get_current_win())
+						for _, win in ipairs(wins) do
+							local buf = vim.api.nvim_win_get_buf(win)
+							if vim.bo[buf].buftype == "" then
+								return win
+							end
+						end
+						return 0
+					end,
+				},
+				pickers = {
+					find_files = {
+						find_command = function()
+							if 1 == vim.fn.executable("rg") then
+								return { "rg", "--files", "--color", "never", "-g", "!.git" }
+							elseif 1 == vim.fn.executable("fd") then
+								return { "fd", "--type", "f", "--color", "never", "-E", ".git" }
+							elseif 1 == vim.fn.executable("fdfind") then
+								return { "fdfind", "--type", "f", "--color", "never", "-E", ".git" }
+							elseif 1 == vim.fn.executable("find") and vim.fn.has("win32") == 0 then
+								return { "find", ".", "-type", "f" }
+							elseif 1 == vim.fn.executable("where") then
+								return { "where", "/r", ".", "*" }
+							end
+						end,
+						hidden = false,
 					},
 				},
 			})
