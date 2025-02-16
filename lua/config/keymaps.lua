@@ -79,3 +79,25 @@ vim.keymap.set("n", "<leader>mn", recall.goto_next, { desc = "Mark Next" })
 vim.keymap.set("n", "<leader>mp", recall.goto_prev, { desc = "Mark Previous" })
 vim.keymap.set("n", "<leader>mc", recall.clear, { desc = "Mark CLear" })
 vim.keymap.set("n", "<leader>ml", ":Telescope recall<CR>", { desc = "Mark Telescope" })
+
+-- Scroll
+local neoscroll = require("neoscroll")
+local keymap = {
+	-- ["<C-u>"] = function() neoscroll.ctrl_u({ duration = 250 }) end;
+	-- ["<C-d>"] = function() neoscroll.ctrl_d({ duration = 250 }) end;
+	-- ["<C-b>"] = function() neoscroll.ctrl_b({ duration = 450 }) end;
+	-- ["<C-f>"] = function() neoscroll.ctrl_f({ duration = 450 }) end;
+	["<PageUp>"] = function()
+		neoscroll.scroll(-0.1, { move_cursor = true, duration = 70 })
+	end,
+	["<PageDown>"] = function()
+		neoscroll.scroll(0.1, { move_cursor = true, duration = 70 })
+	end,
+	-- ["zt"]    = function() neoscroll.zt({ half_win_duration = 250 }) end;
+	-- ["zz"]    = function() neoscroll.zz({ half_win_duration = 250 }) end;
+	-- ["zb"]    = function() neoscroll.zb({ half_win_duration = 250 }) end;
+}
+local modes = { "n", "v", "x" }
+for key, func in pairs(keymap) do
+	map(modes, key, func)
+end

@@ -252,4 +252,8 @@ return {
 	-- 		require("mini.animate").setup()
 	-- 	end,
 	-- },
+	{
+		"karb94/neoscroll.nvim",
+		opts = {},
+	},
 }
