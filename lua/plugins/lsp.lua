@@ -489,6 +489,7 @@ return {
 					gopls = {
 						align_type_to_right = true,
 						add_colon_before_type = false,
+						preserve_type_when_truncate = true,
 					},
 					fallback = true,
 				},
@@ -496,6 +497,11 @@ return {
 				max_width = 60,
 			})
 		end,
+	},
+	{
+		"catgoose/nvim-colorizer.lua",
+		event = "BufReadPre",
+		opts = {},
 	},
 	{
 		"mawkler/refjump.nvim",

@@ -49,6 +49,7 @@ return { -- Useful plugin to show you pending keybinds.
 			{ "<leader>c", group = "[C]ocde" },
 			{ "<leader>e", group = "[E]rror" },
 			{ "<leader>m", group = "[M]ark" },
+			{ "<leader>n", group = "MiniMap" },
 			{ "<leader>g", group = "[G]it", mode = { "n", "v" } },
 			{ "<leader>q", group = "[Q]uit" },
 			{ "<leader>s", group = "[S]earch" },

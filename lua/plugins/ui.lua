@@ -244,16 +244,37 @@ return {
 			})
 		end,
 	},
-	-- {
-	-- 	-- animation
-	-- 	"echasnovski/mini.nvim",
-	-- 	version = false,
-	-- 	config = function()
-	-- 		require("mini.animate").setup()
-	-- 	end,
-	-- },
 	{
 		"karb94/neoscroll.nvim",
 		opts = {},
+	},
+	{
+		"Isrothy/neominimap.nvim",
+		version = "v3.*.*",
+		enabled = true,
+		lazy = false,
+		keys = {
+			{ "<leader>nm", "<cmd>Neominimap toggle<cr>", desc = "Toggle global minimap" },
+			{ "<leader>nn", "<cmd>Neominimap toggleFocus<cr>", desc = "Switch focus on minimap" },
+		},
+		init = function()
+			-- The following options are recommended when layout == "float"
+			vim.g.neominimap = {
+				auto_enable = true,
+				x_multiplier = 5,
+				float = {
+					minimap_width = 8,
+					margin = {
+						right = 0,
+						top = 0,
+						bottom = 0,
+					},
+				},
+				click = {
+					enabled = true,
+					auto_switch_focus = true,
+				},
+			}
+		end,
 	},
 }
