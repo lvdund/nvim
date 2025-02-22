@@ -222,11 +222,12 @@ return {
 		---@type ibl.config
 		opts = {},
 	},
-	{
-		"nvim-zh/colorful-winsep.nvim",
-		config = true,
-		event = { "WinLeave" },
-	},
+	-- For highlight pannel
+	-- {
+	-- 	"nvim-zh/colorful-winsep.nvim",
+	-- 	config = true,
+	-- 	event = { "WinLeave" },
+	-- },
 	{
 		"ya2s/nvim-cursorline",
 		config = function()
@@ -276,5 +277,13 @@ return {
 				},
 			}
 		end,
+	},
+	{
+		"folke/zen-mode.nvim",
+		opts = {
+			window = {
+				width = 0.85, -- width will be 85% of the editor width
+			},
+		},
 	},
 }

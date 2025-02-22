@@ -16,7 +16,7 @@ vim.schedule(function()
 end)
 vim.opt.breakindent = true
 vim.opt.undofile = true
-vim.opt.colorcolumn = "100"
+vim.opt.colorcolumn = "90"
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.signcolumn = "yes"
@@ -31,7 +31,8 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 4
 
 -- setup vim opt
-vim.opt_global.signcolumn = "auto"
-vim.opt_global.wrap = true
-vim.opt_global.shiftwidth = 4
-vim.opt_global.tabstop = 4
+vim.opt.signcolumn = "auto"
+vim.opt.wrap = true
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.o.foldcolumn = "1"
