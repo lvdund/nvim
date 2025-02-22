@@ -187,7 +187,8 @@ return {
 		},
 		cmd = "File Explore",
 		keys = {
-			{ "\\", ":Neotree float reveal<CR>", desc = "NeoTree reveal", silent = true },
+			{ "\\", ":Neotree position=left reveal<CR>", desc = "NeoTree reveal", silent = true },
+			-- { "\\", ":Neotree float reveal<CR>", desc = "NeoTree reveal", silent = true },
 		},
 		opts = {
 			filesystem = {
@@ -278,12 +279,12 @@ return {
 			}
 		end,
 	},
-	{
-		"folke/zen-mode.nvim",
-		opts = {
-			window = {
-				width = 0.85, -- width will be 85% of the editor width
-			},
-		},
-	},
+	-- {
+	-- 	"folke/zen-mode.nvim",
+	-- 	opts = {
+	-- 		window = {
+	-- 			width = 0.85, -- width will be 85% of the editor width
+	-- 		},
+	-- 	},
+	-- },
 }
