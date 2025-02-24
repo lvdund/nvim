@@ -66,6 +66,9 @@ map("n", "<leader>gs", ":TermExec cmd='git status'<CR>", { desc = "[S]tatus" })
 -- Term
 -- map("n", "<C-\\>", ":ToggleTerm<CR>", opts)
 
+-- Neo-tree
+map("n", "\\", "<Cmd>Neotree position=left reveal<CR>")
+
 -- Quickfix
 map("n", "<C-n>", ":cnext<CR>", { desc = "Next search list" })
 map("n", "<C-p>", ":cprevious<CR>", { desc = "Previous search list" })
@@ -88,10 +91,10 @@ local keymap = {
 	-- ["<C-b>"] = function() neoscroll.ctrl_b({ duration = 450 }) end;
 	-- ["<C-f>"] = function() neoscroll.ctrl_f({ duration = 450 }) end;
 	["<PageUp>"] = function()
-		neoscroll.scroll(-0.1, { move_cursor = true, duration = 70 })
+		neoscroll.scroll(-0.1, { move_cursor = false, duration = 70 })
 	end,
 	["<PageDown>"] = function()
-		neoscroll.scroll(0.1, { move_cursor = true, duration = 70 })
+		neoscroll.scroll(0.1, { move_cursor = false, duration = 70 })
 	end,
 	-- ["zt"]    = function() neoscroll.zt({ half_win_duration = 250 }) end;
 	-- ["zz"]    = function() neoscroll.zz({ half_win_duration = 250 }) end;

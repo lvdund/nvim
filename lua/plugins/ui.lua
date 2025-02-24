@@ -1,75 +1,4 @@
-local icons = {
-	Error = " ",
-	Warn = " ",
-	Hint = " ",
-	Info = " ",
-}
-
 return {
-	{
-		-- "folke/tokyonight.nvim",
-		-- lazy = false, -- make sure we load this during startup if it is your main colorscheme
-		-- priority = 1000, -- make sure to load this before all the other start plugins
-		-- config = function()
-		-- 	-- load the colorscheme here
-		-- 	vim.cmd([[colorscheme tokyonight]])
-		-- end,
-		"navarasu/onedark.nvim",
-		config = function()
-			require("onedark").setup({
-				style = "deep",
-			})
-			require("onedark").load()
-		end,
-	},
-	{
-		"akinsho/bufferline.nvim",
-		event = "VeryLazy",
-		keys = {
-			{ "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle Pin" },
-			{ "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "CLose Non-Pinned Buffers" },
-			{ "<leader>bo", "<Cmd>BufferLineCloseOthers<CR>", desc = "Close other Buffers" },
-			{ "<leader>bc", "<Cmd>bd<CR>", desc = "Close this Buffer" },
-			{ "<leader>bh", "<Cmd>BufferLineMovePrev<CR>", desc = "Close other Buffers" },
-			{ "<leader>bl", "<Cmd>BufferLineMoveNext<CR>", desc = "Close other Buffers" },
-			{ "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
-			{ "<Tab>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
-		},
-		opts = {
-			highlights = {
-				buffer_selected = {
-					bold = true,
-					italic = true,
-				},
-			},
-
-			options = {
-				diagnostics = "nvim_lsp",
-				diagnostics_indicator = function(_, _, diag)
-					local ret = (diag.error and icons.Error .. diag.error .. " " or "")
-						.. (diag.warning and icons.Warn .. diag.warning or "")
-					return vim.trim(ret)
-				end,
-				offsets = {
-					{
-						filetype = "neo-tree",
-						text = "Neo-tree",
-						highlight = "Directory",
-						text_align = "left",
-					},
-				},
-				hover = {
-					enabled = true,
-					delay = 200,
-					reveal = { "close" },
-				},
-				indicator = {
-					icon = "▎", -- this should be omitted if indicator style is not 'icon'
-					style = "underline",
-				},
-			},
-		},
-	},
 	{
 		"Bekaboo/dropbar.nvim",
 		-- optional, but required for fuzzy finder support
@@ -90,72 +19,6 @@ return {
 		dependencies = { "neovim/nvim-lspconfig" },
 	},
 	{
-		"b0o/incline.nvim",
-		config = function()
-			require("incline").setup({
-				window = {
-					padding = 0,
-					margin = { horizontal = 0 },
-				},
-				render = function(props)
-					local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
-					if filename == "" then
-						filename = "[No Name]"
-					end
-					local modified = vim.bo[props.buf].modified
-					return {
-						" ",
-						{ filename, gui = modified and "bold,italic" or "bold" },
-						" ",
-						guibg = "#44406e",
-					}
-				end,
-			})
-		end,
-		-- Optional: Lazy load Incline
-		event = "VeryLazy",
-	},
-	{
-		"sontungexpt/sttusline",
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
-		event = { "BufEnter" },
-		config = function(_, _)
-			require("sttusline").setup({
-				-- statusline_color = "#000000",
-				statusline_color = "StatusLine",
-
-				-- | 1 | 2 | 3
-				-- recommended: 3
-				laststatus = 3,
-				disabled = {
-					filetypes = {
-						"NvimTree",
-						-- "lazy",
-					},
-					buftypes = {
-						"terminal",
-					},
-				},
-				components = {
-					"mode",
-					"filename",
-					"git-branch",
-					"git-diff",
-					"%=",
-					"diagnostics",
-					"lsps-formatters",
-					"copilot",
-					"indent",
-					"encoding",
-					"pos-cursor",
-					"pos-cursor-progress",
-				},
-			})
-		end,
-	},
-	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		opts = {
@@ -174,46 +37,6 @@ return {
 			--   `nvim-notify` is only needed, if you want to use the notification view.
 			--   If not available, we use `mini` as the fallback
 			"rcarriga/nvim-notify",
-		},
-	},
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
-			-- {"3rd/image.nvim", opts = {}}, -- Optional image support in preview window: See `# Preview Mode` for more information
-		},
-		cmd = "File Explore",
-		keys = {
-			{ "\\", ":Neotree position=left reveal<CR>", desc = "NeoTree reveal", silent = true },
-			-- { "\\", ":Neotree float reveal<CR>", desc = "NeoTree reveal", silent = true },
-		},
-		opts = {
-			filesystem = {
-				window = {
-					mappings = {
-						["\\"] = "close_window",
-					},
-				},
-				commands = {
-					-- Override delete to use trash instead of rm
-					delete = function(state)
-						local inputs = require("neo-tree.ui.inputs")
-						local path = state.tree:get_node().path
-						local msg = "Are you sure you want to trash " .. path
-						inputs.confirm(msg, function(confirmed)
-							if not confirmed then
-								return
-							end
-
-							vim.fn.system({ "trash", vim.fn.fnameescape(path) })
-							require("neo-tree.sources.manager").refresh(state.name)
-						end)
-					end,
-				},
-			},
 		},
 	},
 	{
@@ -250,35 +73,35 @@ return {
 		"karb94/neoscroll.nvim",
 		opts = {},
 	},
-	{
-		"Isrothy/neominimap.nvim",
-		version = "v3.*.*",
-		enabled = true,
-		lazy = false,
-		keys = {
-			{ "<leader>nm", "<cmd>Neominimap toggle<cr>", desc = "Toggle global minimap" },
-			{ "<leader>nn", "<cmd>Neominimap toggleFocus<cr>", desc = "Switch focus on minimap" },
-		},
-		init = function()
-			-- The following options are recommended when layout == "float"
-			vim.g.neominimap = {
-				auto_enable = true,
-				x_multiplier = 5,
-				float = {
-					minimap_width = 8,
-					margin = {
-						right = 0,
-						top = 0,
-						bottom = 0,
-					},
-				},
-				click = {
-					enabled = true,
-					auto_switch_focus = true,
-				},
-			}
-		end,
-	},
+	-- {
+	-- 	"Isrothy/neominimap.nvim",
+	-- 	version = "v3.*.*",
+	-- 	enabled = true,
+	-- 	lazy = false,
+	-- 	keys = {
+	-- 		{ "<leader>nm", "<cmd>Neominimap toggle<cr>", desc = "Toggle global minimap" },
+	-- 		{ "<leader>nn", "<cmd>Neominimap toggleFocus<cr>", desc = "Switch focus on minimap" },
+	-- 	},
+	-- 	init = function()
+	-- 		-- The following options are recommended when layout == "float"
+	-- 		vim.g.neominimap = {
+	-- 			auto_enable = true,
+	-- 			x_multiplier = 5,
+	-- 			float = {
+	-- 				minimap_width = 8,
+	-- 				margin = {
+	-- 					right = 0,
+	-- 					top = 0,
+	-- 					bottom = 0,
+	-- 				},
+	-- 			},
+	-- 			click = {
+	-- 				enabled = true,
+	-- 				auto_switch_focus = true,
+	-- 			},
+	-- 		}
+	-- 	end,
+	-- },
 	-- {
 	-- 	"folke/zen-mode.nvim",
 	-- 	opts = {
