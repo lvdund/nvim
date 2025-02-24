@@ -123,7 +123,7 @@ return {
 			commands = {},
 			window = {
 				position = "left",
-				width = 40,
+				width = 30,
 				mapping_options = {
 					noremap = true,
 					nowait = true,
@@ -139,16 +139,16 @@ return {
 					["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
 					-- Read `# Preview Mode` for more information
 					["l"] = "focus_preview",
-					["S"] = "open_split",
-					["s"] = "open_vsplit",
+					-- ["S"] = "open_split",
+					-- ["s"] = "open_vsplit",
 					-- ["S"] = "split_with_window_picker",
 					-- ["s"] = "vsplit_with_window_picker",
 					["t"] = "open_tabnew",
 					-- ["<cr>"] = "open_drop",
 					-- ["t"] = "open_tab_drop",
-					["w"] = "open_with_window_picker",
+					-- ["w"] = "open_with_window_picker",
 					--["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
-					["C"] = "close_node",
+					-- ["C"] = "close_node",
 					-- ['C'] = 'close_all_subnodes',
 					["z"] = "close_all_nodes",
 					--["Z"] = "expand_all_nodes",
@@ -157,24 +157,24 @@ return {
 						-- this command supports BASH style brace expansion ("x{a,b,c}" -> xa,xb,xc). see `:h neo-tree-file-actions` for details
 						-- some commands may take optional config options, see `:h neo-tree-mappings` for details
 						config = {
-							show_path = "none", -- "none", "relative", "absolute"
+							show_path = "relative", -- "none", "relative", "absolute"
 						},
 					},
 					["A"] = "add_directory", -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
 					["d"] = "delete",
 					["r"] = "rename",
-					["b"] = "rename_basename",
+					-- ["b"] = "rename_basename",
 					["y"] = "copy_to_clipboard",
 					["x"] = "cut_to_clipboard",
 					["p"] = "paste_from_clipboard",
-					["c"] = "copy", -- takes text input for destination, also accepts the optional config.show_path option like "add":
+					-- ["c"] = "copy", -- takes text input for destination, also accepts the optional config.show_path option like "add":
 					-- ["c"] = {
 					--  "copy",
 					--  config = {
 					--    show_path = "none" -- "none", "relative", "absolute"
 					--  }
 					--}
-					["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
+					-- ["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
 					["\\"] = "close_window",
 					["R"] = "refresh",
 					["?"] = "show_help",
@@ -236,29 +236,29 @@ return {
 				-- instead of relying on nvim autocmd events.
 				window = {
 					mappings = {
-						["<bs>"] = "navigate_up",
-						["."] = "set_root",
+						-- ["<bs>"] = "navigate_up",
+						-- ["."] = "set_root",
 						["H"] = "toggle_hidden",
 						["/"] = "fuzzy_finder",
-						["D"] = "fuzzy_finder_directory",
-						["#"] = "fuzzy_sorter", -- fuzzy sorting using the fzy algorithm
+						-- ["D"] = "fuzzy_finder_directory",
+						-- ["#"] = "fuzzy_sorter", -- fuzzy sorting using the fzy algorithm
 						-- ["D"] = "fuzzy_sorter_directory",
-						["f"] = "filter_on_submit",
-						["<c-x>"] = "clear_filter",
-						["[g"] = "prev_git_modified",
-						["]g"] = "next_git_modified",
+						-- ["f"] = "filter_on_submit",
+						-- ["<c-x>"] = "clear_filter",
+						-- ["[g"] = "prev_git_modified",
+						-- ["]g"] = "next_git_modified",
 						["o"] = {
 							"show_help",
 							nowait = false,
 							config = { title = "Order by", prefix_key = "o" },
 						},
-						["oc"] = { "order_by_created", nowait = false },
-						["od"] = { "order_by_diagnostics", nowait = false },
-						["og"] = { "order_by_git_status", nowait = false },
-						["om"] = { "order_by_modified", nowait = false },
-						["on"] = { "order_by_name", nowait = false },
-						["os"] = { "order_by_size", nowait = false },
-						["ot"] = { "order_by_type", nowait = false },
+						-- ["oc"] = { "order_by_created", nowait = false },
+						-- ["od"] = { "order_by_diagnostics", nowait = false },
+						-- ["og"] = { "order_by_git_status", nowait = false },
+						-- ["om"] = { "order_by_modified", nowait = false },
+						-- ["on"] = { "order_by_name", nowait = false },
+						-- ["os"] = { "order_by_size", nowait = false },
+						-- ["ot"] = { "order_by_type", nowait = false },
 						-- ['<key>'] = function(state) ... end,
 					},
 					fuzzy_finder_mappings = { -- define keymaps for filter popup window in fuzzy_finder_mode
@@ -299,20 +299,20 @@ return {
 				window = {
 					mappings = {
 						["d"] = "buffer_delete",
-						["bd"] = "buffer_delete",
-						["<bs>"] = "navigate_up",
-						["."] = "set_root",
+						-- ["bd"] = "buffer_delete",
+						-- ["<bs>"] = "navigate_up",
+						-- ["."] = "set_root",
 						["o"] = {
 							"show_help",
 							nowait = false,
 							config = { title = "Order by", prefix_key = "o" },
 						},
-						["oc"] = { "order_by_created", nowait = false },
-						["od"] = { "order_by_diagnostics", nowait = false },
-						["om"] = { "order_by_modified", nowait = false },
-						["on"] = { "order_by_name", nowait = false },
-						["os"] = { "order_by_size", nowait = false },
-						["ot"] = { "order_by_type", nowait = false },
+						-- ["oc"] = { "order_by_created", nowait = false },
+						-- ["od"] = { "order_by_diagnostics", nowait = false },
+						-- ["om"] = { "order_by_modified", nowait = false },
+						-- ["on"] = { "order_by_name", nowait = false },
+						-- ["os"] = { "order_by_size", nowait = false },
+						-- ["ot"] = { "order_by_type", nowait = false },
 					},
 				},
 			},
@@ -332,12 +332,12 @@ return {
 							nowait = false,
 							config = { title = "Order by", prefix_key = "o" },
 						},
-						["oc"] = { "order_by_created", nowait = false },
-						["od"] = { "order_by_diagnostics", nowait = false },
-						["om"] = { "order_by_modified", nowait = false },
-						["on"] = { "order_by_name", nowait = false },
-						["os"] = { "order_by_size", nowait = false },
-						["ot"] = { "order_by_type", nowait = false },
+						-- ["oc"] = { "order_by_created", nowait = false },
+						-- ["od"] = { "order_by_diagnostics", nowait = false },
+						-- ["om"] = { "order_by_modified", nowait = false },
+						-- ["on"] = { "order_by_name", nowait = false },
+						-- ["os"] = { "order_by_size", nowait = false },
+						-- ["ot"] = { "order_by_type", nowait = false },
 					},
 				},
 			},
